@@ -1,0 +1,45 @@
+button {
+    margin:5px;
+}
+
+td {
+    text-align: center;
+    background-color: lightgray;
+    padding: 0;
+}
+
+table th {
+    width: auto !important;
+}
+
+.selected {
+    background-color: lightyellow;
+}
+
+.table-row:hover {
+    background-color: lightgrey;
+}
+
+.placed {
+    background-color: #ccccff;
+}
+
+.placed.selected {
+    background-color: lightpink;
+}
+
+.tooltip-inner {
+    white-space:pre-wrap;
+}
+
+td .hovercell {
+    display: inline-block;
+    visibility: hidden;
+    margin: 0;
+    text-align: center;
+    border-radius: 5px;
+}
+
+td:hover .hovercell {
+    visibility: visible;
+}

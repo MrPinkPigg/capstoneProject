@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+<body>
+<div class="container-fluid"><br>
+    <div class="container">
+        <div class="mb-3 row">
+            <div class="col-sm-6">
+                <div class="form-floating">
+                    <select name="type" class="form-control" id="type" onchange="newTable()">
+                        <option value="0" selected="selected">Plate</option>
+                        <!--option value="1">Plate</option-->
+                    </select>
+                    <label for="plates">Container Type</label>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-floating">
+                    <select name="size" class="form-control" id="size" onchange="newTable()">
+                        <option value="96" selected="selected">96</option>
+                        <option value="384">384</option>
+                        <option value="1536">1536</option>
+                    </select>
+                    <label for="plates">Container Size</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h3 class="text-center">Compounds to place in plate</h3>
+    <div class="mb-3" role="group" id="barcodes"></div>
+    <div id="props" class="container d-none">
+        <div class="mb-3 row">
+            <div class="col-sm-3">
+                <div class="form-floating">
+                    <input type="number" min="0" step="any" class="form-control" name="volume" id="volume" />
+                    <label for="volume">Volume</label>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-floating">
+                    <select class="form-control" name="unit" id="unit">
+                        <option value="uL" selected="selected">uL</option>
+                        <option value="mL">mL</option>
+                    </select>
+                    <label for="unit">Unit</label>
+                </div>
+            </div>
+            <div class ="col-sm-2"><br></div>
+            <div class="col-sm-3">
+                <div class="form-floating">
+                    <input type="number" min="0" step="any" class="form-control" name="conc" id="conc" />
+                    <label for="conc">Concentration</label>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-floating">
+                    <select class="form-control" name="concunit" id="concunit">
+                        <option value="mM" selected="selected">mM</option>
+                        <option value="uM">uM</option>
+                    </select>
+                    <label for="concunit">Unit</label>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <button id="populate" type="button" class="btn btn-primary m-1" onclick="click_populate()">Fill Empty Selection</button>
+            <button id="override" type="button" class="btn btn-primary m-1" onclick="click_override()">Override Selection</button>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <div id="table"></div>
+        <div class="btn-group-vertical mx-3 h-50">
+            <button id="reset" type="button" class="btn btn-secondary" onclick="click_reset()">Reset</button>
+            <button id="submit" type="button" class="btn btn-secondary" onclick="click_submit()">Submit</button>
+        </div>
+    </div>
+    <div id="results"></div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/selection-js/lib/selection.min.js"></script>
+    <script src="index.js"></script>
+</div>
+</body>
+</html>
