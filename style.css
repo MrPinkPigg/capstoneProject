@@ -43,3 +43,21 @@ td .hovercell {
 td:hover .hovercell {
     visibility: visible;
 }
+
+.compounds {
+    list-style-type: none;
+}
+.compoundsDiv {
+    border: 1px solid black;
+    border-radius: 5px;
+    float: left;
+    display: inline;
+    height: 400px;
+    width:200px;
+    overflow-y: scroll;
+}
+
+#props {
+    float: right;
+    display: inline;
+}
