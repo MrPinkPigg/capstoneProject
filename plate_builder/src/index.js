@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import $ from 'jquery'
 import SelectionArea, {SelectionEvent} from '@viselect/react';
+//const SelectionArea = require('@viselect/react');
 ReactDOM.render(
   <React.StrictMode>
     <App />
@@ -145,7 +146,8 @@ const isCellEmpty = (cell) => !cell.getAttribute("barcode");
 //
 // Allow for cell selection
 //
-
+//********THIS IS THE COMMENTED OUT STUFF
+/*
 const selection = new SelectionArea({ 
     selectables: ['td'], 
     boundaries: ['table']
@@ -156,7 +158,6 @@ const selection = new SelectionArea({
         }
         selection.clearSelection();
     }
-
 }).on('move', ({store: {changed: {added, removed}}}) => {
     for (const el of added) {
         el.classList.add('selected');
@@ -168,7 +169,7 @@ const selection = new SelectionArea({
 }).on('stop', () => {
     document.getElementById("props").classList.remove("d-none");
     selection.keepSelection();
-});
+});*/
 
 //
 // Set-up functions
@@ -203,9 +204,9 @@ const generateTable = (rows, cols) => {
         tableHTML += "</tr>";
     }
     tableHTML += "</tbody></table>";
-    $(function () {
+    /*$(function () {
         $('[data-toggle="tooltip"]').tooltip()
-    })
+    })*/
     return tableHTML;
 }
 
