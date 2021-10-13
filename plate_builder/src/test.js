@@ -1,3 +1,4 @@
+
 const table = document.getElementById("table");
 const barcodesDiv = document.getElementById("barcodes");
 const size = document.getElementById("size");
