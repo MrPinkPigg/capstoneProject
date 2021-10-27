@@ -1,11 +1,10 @@
-import React from 'react';
+import React, {FunctionComponent, useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import $ from 'jquery'
-import SelectionArea, {SelectionEvent} from '@viselect/react';
-//const SelectionArea = require('@viselect/react');
+import SelectionArea from '@viselect/react';
 ReactDOM.render(
   <React.StrictMode>
     <App />
@@ -147,7 +146,7 @@ const isCellEmpty = (cell) => !cell.getAttribute("barcode");
 // Allow for cell selection
 //
 //********THIS IS THE COMMENTED OUT STUFF
-/*
+
 const selection = new SelectionArea({ 
     selectables: ['td'], 
     boundaries: ['table']
@@ -169,7 +168,7 @@ const selection = new SelectionArea({
 }).on('stop', () => {
     document.getElementById("props").classList.remove("d-none");
     selection.keepSelection();
-});*/
+});
 
 //
 // Set-up functions
