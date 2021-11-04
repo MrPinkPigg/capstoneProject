@@ -180,7 +180,7 @@ const click_override = () => {
 const click_reset = () => {
     newTable();
     barcodesInfo = {};
-    barcodes = [...ogBarcodes];
+    barcodes = barcodeData;
     generateBarcodes();
     //selected = '';
     size.disabled = false;
@@ -190,7 +190,7 @@ const click_reset = () => {
 
 const click_submit = () => {
     results.innerHTML = '';
-    ogBarcodes.forEach(barcode => {
+    barcodeData.forEach(barcode => {
         if(barcodesInfo[barcode].placement)
             results.innerHTML += `<p>Tube with barcode ${barcode} was placed in ${barcodesInfo[barcode].placement}; 
             it has a volume of ${barcodesInfo[barcode].volume} ${barcodesInfo[barcode].unit} & a concentration of ${barcodesInfo[barcode].conc} ${barcodesInfo[barcode].concunit}.</p>`;
