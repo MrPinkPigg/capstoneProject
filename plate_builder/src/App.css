@@ -89,11 +89,18 @@ td:hover .hovercell {
 .compoundsDiv {
   border: 1px solid black;
   border-radius: 5px;
-  float: left;
-  display: inline;
   height: 400px;
   width:200px;
   overflow-y: scroll;
+}
+
+.compoundList {
+  float: left;
+  display: inline;
+}
+
+.compBtn {
+  margin-top: 10px;
 }
 
 #props {

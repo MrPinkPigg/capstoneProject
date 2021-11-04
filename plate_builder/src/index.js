@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
 import $ from 'jquery'
 import SelectionArea, {SelectionEvent} from '@viselect/react';
 
@@ -28,10 +27,9 @@ const unit = document.getElementById("unit");
 const conc = document.getElementById("conc");
 const concunit = document.getElementById("concunit");
 const results = document.getElementById("results");
+const barcodeData = require("./data.json");
 
-const barcodeData = require("./data.json")
 let barcodes = barcodeData;
-
 let barcodesInfo = {};
 let rows;
 let cols;
