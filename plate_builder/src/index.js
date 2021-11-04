@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {FunctionComponent, useState} from 'react';
 
 import $ from 'jquery'
 import SelectionArea, {SelectionEvent} from '@viselect/react';
@@ -148,28 +149,48 @@ const isCellEmpty = (cell) => !cell.getAttribute("barcode");
 // Allow for cell selection
 //
 //********THIS IS THE COMMENTED OUT STUFF
-/*
-const selection = new SelectionArea({ 
-    selectables: ['td'], 
-    boundaries: ['table']
-}).on('start', ({store, event}) => {
-    if (!event.ctrlKey && !event.metaKey) {
-        for (const el of store.stored) {
-            el.classList.remove('selected');
+
+var Selected = function () {
+    var _a = useState(function () { return new Set(); }), selected = _a[0], setSelected = _a[1];
+    var extractIds = function (els) {
+        return els.map(function (v) { return v.getAttribute('data-key'); })
+            .filter(Boolean)
+            .map(Number);
+    };
+    var onStart = function (_a) {
+        var event = _a.event, selection = _a.selection;
+        if (!(event === null || event === void 0 ? void 0 : event.ctrlKey) && !(event === null || event === void 0 ? void 0 : event.metaKey)) {
+            selection.clearSelection();
+            setSelected(function () { return new Set(); });
         }
-        selection.clearSelection();
-    }
-}).on('move', ({store: {changed: {added, removed}}}) => {
-    for (const el of added) {
-        el.classList.add('selected');
-    }
-    for (const el of removed) {
-        el.classList.remove('selected');
-    }
-}).on('stop', () => {
-    document.getElementById("props").classList.remove("d-none");
-    selection.keepSelection();
-});*/
+    };
+    var onMove = function (_a) {
+        var _b = _a.store.changed, added = _b.added, removed = _b.removed;
+        setSelected(function (prev) {
+            var next = new Set(prev);
+            extractIds(added).forEach(function (id) { return next.add(id); });
+            extractIds(removed).forEach(function (id) { return next.delete(id); });
+            return next;
+        });
+    };
+
+    return (
+        <>
+            <SelectionArea className="container"
+                           onStart={onStart}
+                           onMove={onMove}
+                           selectables=".selectable">
+                {new Array(42).fill(0).map((_, index) => (
+                    <div className={Selected.has(index) ? 'Selected selectable' : 'selectable'}
+                         data-key={index}
+                         key={index}/>
+                ))}
+            </SelectionArea>
+        </>
+    );
+                }
+
+
 
 //
 // Set-up functions
@@ -252,7 +273,7 @@ const setTubeProps = (barcode, cell) => {
 }
 
 const fillOrEditCells = (allowEdit) => {
-    const selectedCells = document.querySelectorAll(".selected");
+    const selectedCells = document.querySelectorAll(".Selected");
     let filled = 0;
     selectedCells.forEach(cell => { 
         if (cell.getAttribute("barcode")) filled++;
