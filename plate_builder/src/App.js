@@ -41,6 +41,7 @@ function App() {
                             <ul id='barcodes'></ul>
                         </div>
                         <button id="newBarcode" type="button" class="btn btn-secondary compBtn" onclick="">Add Barcode</button>
+                        {/* https://www.w3schools.com/howto/howto_css_modals.asp */}
                     </div>
                     <div id="props" class="container d-none">
                         <div class="mb-3 row">
