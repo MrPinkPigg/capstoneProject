@@ -88,6 +88,7 @@ td:hover .hovercell {
 }
 .compoundsDiv {
   border: 1px solid black;
+  float: left;
   border-radius: 5px;
   height: 400px;
   width:200px;

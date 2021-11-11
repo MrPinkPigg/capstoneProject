@@ -2,15 +2,14 @@
 
 import React from 'react';
 import useParams from 'react';
-
-
-
+const barcodeData = require('../data.json')
+let barcodes = barcodeData
 
 const Plate = (props) => {
     
     const rows = +props.row;
     const cols = +props.col;
-    
+    generateBarcodes();
     const rowsArr = new Array(rows)
     const colsArr = new Array(cols)
     rowsArr.fill("");
@@ -18,6 +17,10 @@ const Plate = (props) => {
     console.log(rowsArr)
     console.log(colsArr)
     return(
+        <div>
+            <div id='barcodes' class='compoundsDiv'>
+                
+            </div>
         <div id="plate">
             <table class="mb-3">
                 <tbody>
@@ -33,7 +36,7 @@ const Plate = (props) => {
                             {colsArr.map((e, col) => {
                                 const cell = convertCol2Alpha(col) + row
 
-                                return <td id={cell} row={row} class="border border-2" /*onclick={(cell)}*/ data-toggle="tooltip" data-placement="top" title="Empty">
+                                return <td id={cell} row={row} class="border border-2" data-toggle="tooltip" data-placement="top" title="Empty">
                                     <section className="hovercell mx-1">{cell}</section>
                                 </td>
                             })}
@@ -41,6 +44,7 @@ const Plate = (props) => {
                     ))}
                 </tbody>
             </table>
+        </div>
         </div>
         );
 }
@@ -66,6 +70,15 @@ const newTable = () => {
 }
 */
 
+const generateBarcodes = () => {
+    const barcodesDiv = document.getElementById("barcodes");
+    let barcodesInfo = {};
+    barcodesDiv.innerHTML = '';
+    barcodes.forEach(barcode => {
+        barcodesInfo[barcode] = {};
+        barcodesDiv.innerHTML += `<li class='compounds'><button type="button" class="btn btn-secondary m-1 btn-sm" id=${barcode} onclick="click_barcode(${barcode})">${barcode}</button></li>`;
+    });
+}
 const generateTable = (rows, cols) => {
     let tableHTML = `<table class="mb-3"><tbody><tr><th></th>`;
     for(let col = 0; col < cols; col++){
@@ -81,7 +94,7 @@ const generateTable = (rows, cols) => {
         for(let col = 0; col < cols; col++){
             const cell = convertCol2Alpha(col) + row;
             tableHTML += 
-            `<td id=${cell} row=${row} class="border border-2" onclick="click_cell(${cell})" data-toggle="tooltip" data-placement="top" title="Empty">
+            `<td id=${cell} row=${row} class="border border-2" onclick={testing} data-toggle="tooltip" data-placement="top" title="Empty">
                 <section class="hovercell mx-1">${cell}</section>
             </td>`;
         }
