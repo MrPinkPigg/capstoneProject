@@ -1,3 +1,22 @@
+const table = document.getElementById("table");
+const barcodesDiv = document.getElementById("barcodes");
+const size = document.getElementById("size");
+const type = document.getElementById("type");
+const volume = document.getElementById("volume");
+const unit = document.getElementById("unit");
+const conc = document.getElementById("conc");
+const concunit = document.getElementById("concunit");
+const results = document.getElementById("results");
+
+const convertCol2Alpha = (col) => String.fromCharCode(65 + col);
+const isCellEmpty = (cell) => !cell.getAttribute("barcode");
+let selected = "";
+const barcodeData = require("./data.json");
+let barcodes = barcodeData;
+let rows;
+let cols;
+let rowFill = {};
+
 //
 // Allow for cell selection
 //
@@ -22,8 +41,8 @@ const selection = new SelectionArea({
 }).on('stop', () => {
     document.getElementById("props").classList.remove("d-none");
     selection.keepSelection();
-});*/
-
+});
+*/
 
 /*const placeTube = (barcode, cell) => {
     barcode.disabled = true;
@@ -103,24 +122,33 @@ const click_submit = () => {
 //
 // Archive
 //
-/*const click_row = (row) =>  {
+const click_row = (row) =>  {
+    console.log("clickrow");
     if (barcodes.length >= cols - rowFill[row] && volume.value > 0 && conc.value > 0) {
         for(let colToFill = 0; colToFill < cols; colToFill++) {
             const cell = document.getElementById(convertCol2Alpha(colToFill) + row);
-            if(cellEmpty(cell)) {
+            if(isCellEmpty(cell)) {
                 const barcode = document.getElementById(barcodes[0]);
-                placeBarcode(barcode, cell);
+                //placeBarcode(barcode, cell);
             }
         }
     }
-}*/
+}
 
-/*const click_cell = (cell) => {
-    if(barcodes[0] && !document.getElementsById(barcodes[0]).getAttribute("placement") && isCellEmpty(cell) && volume.value > 0 && conc.value > 0) 
-        placeTube(selected, cell);
-}*/
+export const click_cell = (cell) => {
+    console.log("clicked: " + cell);
+    if(document.getElementById(cell).title == "Empty") {
+        document.getElementById(cell).title = "Filled";
 
-/*const click_barcode = (barcode) => {
+    } else if(document.getElementById(cell).title == "Filled"){
+        document.getElementById(cell).title = "Empty";
+
+    }
+}
+        
+
+
+const click_barcode = (barcode) => {
     selected = barcode;
     document.getElementById("props").classList.remove("d-none");
-}*/
+}
