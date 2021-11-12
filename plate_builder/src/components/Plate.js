@@ -2,17 +2,14 @@
 
 import React from 'react';
 import useParams from 'react';
-const barcodeData = require('../data.json')
-let barcodes = barcodeData
-
-
+import {click_cell} from "./../Controller.js";
 
 
 const Plate = (props) => {
     
     const rows = +props.row;
     const cols = +props.col;
-    generateBarcodes();
+    
     const rowsArr = new Array(rows)
     const colsArr = new Array(cols)
     rowsArr.fill("");
@@ -20,10 +17,6 @@ const Plate = (props) => {
     console.log(rowsArr)
     console.log(colsArr)
     return(
-        <div>
-            <div id='barcodes' class='compoundsDiv'>
-                
-            </div>
         <div id="plate">
             <table class="mb-3">
                 <tbody>
@@ -40,14 +33,13 @@ const Plate = (props) => {
                                 const cell = convertCol2Alpha(col) + row
 
                                 return <td id={cell} row={row} class="border border-2" data-toggle="tooltip" data-placement="top" title="Empty">
-                                    <section className="hovercell mx-1">{cell}</section>
+                                    <section className="hovercell mx-1" onClick={() => click_cell(cell)}>{cell}</section>
                                 </td>
                             })}
                         </tr>
                     ))}
                 </tbody>
             </table>
-        </div>
         </div>
         );
 }
@@ -72,16 +64,6 @@ const newTable = () => {
     table.innerHTML = generateTable(rows, cols);
 }
 */
-const generateBarcodes = () => {
-    const barcodesDiv = document.getElementById("barcodes");
-    let barcodesInfo = {};
-    barcodesDiv.innerHTML = '';
-    barcodes.forEach(barcode => {
-        barcodesInfo[barcode] = {};
-        barcodesDiv.innerHTML += `<li class='compounds'><button type="button" class="btn btn-secondary m-1 btn-sm" id=${barcode} onclick="click_barcode(${barcode})">${barcode}</button></li>`;
-    });
-}
-
 
 const generateTable = (rows, cols) => {
     let tableHTML = `<table class="mb-3"><tbody><tr><th></th>`;
