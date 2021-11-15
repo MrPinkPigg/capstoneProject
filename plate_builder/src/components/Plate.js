@@ -9,7 +9,6 @@ const Plate = (props) => {
     
     const rows = +props.row;
     const cols = +props.col;
-    generateBarcodes();
     const rowsArr = new Array(rows)
     const colsArr = new Array(cols)
     rowsArr.fill("");
@@ -18,8 +17,8 @@ const Plate = (props) => {
     console.log(colsArr)
     return(
         <div>
+            <button id='' onClick={generateBarcodes}>Generate Barcodes</button> 
             <div id='barcodes' class='compoundsDiv'>
-                
             </div>
         <div id="plate">
             <table class="mb-3">
