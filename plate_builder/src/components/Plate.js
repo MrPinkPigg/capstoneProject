@@ -3,6 +3,8 @@
 import React from 'react';
 import useParams from 'react';
 import {click_cell} from "./../Controller.js";
+const barcodeData = require('../data.json')
+let barcodes = barcodeData
 
 
 const Plate = (props) => {
@@ -68,7 +70,15 @@ const newTable = () => {
     table.innerHTML = generateTable(rows, cols);
 }
 */
-
+const generateBarcodes = () => {
+    const barcodesDiv = document.getElementById("barcodes");
+    let barcodesInfo = {};
+    barcodesDiv.innerHTML = '';
+    barcodes.forEach(barcode => {
+        barcodesInfo[barcode] = {};
+        barcodesDiv.innerHTML += `<li class='compounds'><button type="button" class="btn btn-secondary m-1 btn-sm" id=${barcode} onclick="click_barcode(${barcode})">${barcode}</button></li>`;
+    });
+}
 const generateTable = (rows, cols) => {
     let tableHTML = `<table class="mb-3"><tbody><tr><th></th>`;
     for(let col = 0; col < cols; col++){
