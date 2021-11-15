@@ -108,3 +108,7 @@ td:hover .hovercell {
   float: right;
   display: inline;
 }
+
+.hide {
+  display: none;
+}

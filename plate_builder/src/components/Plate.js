@@ -20,7 +20,7 @@ const Plate = (props) => {
     return(
         <div>
             <button id='' onClick={generateBarcodes}>Generate Barcodes</button> 
-            <div id='barcodes' class='compoundsDiv'>
+            <div id='barcodes' class='compoundsDiv hide'>
             </div>
         <div id="plate">
             <table class="mb-3">
@@ -72,6 +72,7 @@ const newTable = () => {
 */
 const generateBarcodes = () => {
     const barcodesDiv = document.getElementById("barcodes");
+    barcodesDiv.classList.remove("hide");
     let barcodesInfo = {};
     barcodesDiv.innerHTML = '';
     barcodes.forEach(barcode => {
