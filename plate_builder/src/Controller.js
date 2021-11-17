@@ -122,6 +122,7 @@ const click_submit = () => {
 //
 // Archive
 //
+/*
 const click_row = (row) =>  {
     console.log("clickrow");
     if (barcodes.length >= cols - rowFill[row] && volume.value > 0 && conc.value > 0) {
@@ -133,6 +134,22 @@ const click_row = (row) =>  {
             }
         }
     }
+}
+*/
+
+export const click_row = (row) => {
+    console.log("clicked row: " + row);
+    let columnsArr = ["A","B","C","D","E","F","G","H"];
+    let i = 0;
+    while(i < columnsArr.length){
+        let tempCell = columnsArr[i]+row;
+        if(document.getElementById(tempCell).title == "Empty") {
+            document.getElementById(tempCell).title = "Filled";
+        } else if(document.getElementById(tempCell).title == "Filled"){
+            document.getElementById(tempCell).title = "Empty";
+        }
+        i++;
+    } 
 }
 
 export const click_cell = (cell) => {

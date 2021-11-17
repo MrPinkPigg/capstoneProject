@@ -3,6 +3,7 @@
 import React from 'react';
 import useParams from 'react';
 import {click_cell} from "./../Controller.js";
+import {click_row} from "./../Controller.js";
 
 
 
@@ -30,7 +31,7 @@ const Plate = (props) => {
                 <tbody>
                     {rowsArr.map((e, row) => (
                         <tr>
-                            <th id={row} scope="row">{row}</th>
+                            <th id={row} scope="row" onClick={() => click_row(row)}>{row}</th>
                             {colsArr.map((e, col) => {
                                 const cell = convertCol2Alpha(col) + row
 
@@ -82,7 +83,7 @@ const generateTable = (rows, cols) => {
         for(let col = 0; col < cols; col++){
             const cell = convertCol2Alpha(col) + row;
             tableHTML += 
-            `<td id=${cell} row=${row} className="border border-2" onClick="click_cell(${cell})" data-toggle="tooltip" data-placement="top" title="Empty">
+            `<td id=${cell} row=${row} className="border border-2" data-toggle="tooltip" data-placement="top" title="Empty">
                 <section className="hovercell mx-1">${cell}</section>
             </td>`;
         }
