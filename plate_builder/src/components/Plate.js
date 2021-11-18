@@ -77,8 +77,13 @@ const generateBarcodes = () => {
     barcodesDiv.innerHTML = '';
     barcodes.forEach(barcode => {
         barcodesInfo[barcode] = {};
-        barcodesDiv.innerHTML += `<li class='compounds'><button type="button" class="btn btn-secondary m-1 btn-sm" id=${barcode} onclick="click_barcode(${barcode})">${barcode}</button></li>`;
+        barcodesDiv.innerHTML += `<li class='compounds'><button onClick={} type="button" class="btn btn-secondary m-1 btn-sm" id=${barcode} onclick="click_barcode(${barcode})">${barcode}</button></li>`;
     });
+}
+
+const compoundSelect = (name) => {
+    const barcodesDiv = document.getElementById("barcodes");
+    console.log(name)
 }
 const generateTable = (rows, cols) => {
     let tableHTML = `<table class="mb-3"><tbody><tr><th></th>`;
@@ -95,7 +100,7 @@ const generateTable = (rows, cols) => {
         for(let col = 0; col < cols; col++){
             const cell = convertCol2Alpha(col) + row;
             tableHTML += 
-            `<td id=${cell} row=${row} class="border border-2" onclick={testing} data-toggle="tooltip" data-placement="top" title="Empty">
+            `<td id=${cell} row=${row} class="border border-2" onclick={compoundSelect(${cell})} data-toggle="tooltip" data-placement="top" title="Empty">
                 <section class="hovercell mx-1">${cell}</section>
             </td>`;
         }

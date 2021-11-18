@@ -138,6 +138,7 @@ export const click_cell = (cell) => {
     console.log("clicked: " + cell);
     if(document.getElementById(cell).title == "Empty") {
         document.getElementById(cell).title = "Filled";
+        //document.getElementById(cell).style.backgroundColor = '#0000FF'
 
     } else if(document.getElementById(cell).title == "Filled"){
         document.getElementById(cell).title = "Empty";

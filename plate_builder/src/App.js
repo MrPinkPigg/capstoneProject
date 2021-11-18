@@ -21,7 +21,7 @@ class App extends Component{
           <hr />
           <Switch>
             <Route path='/plate' render={(props)=><Plate {...props} row='12' col='8'/>} />
-            <Route path='/barcodes' element={<Barcodes/>} />
+            <Route path='/barcodes' render={()=><Barcodes/>} />
           </Switch>
         </div>
       </Router>
