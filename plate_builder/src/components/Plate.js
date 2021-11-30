@@ -2,7 +2,7 @@
 
 import React from 'react';
 import useParams from 'react';
-import {click_cell} from "./../Controller.js";
+import {click_cell, onclickBarcode} from "./../Controller.js";
 const barcodeData = require('../data.json')
 let barcodes = barcodeData
 
@@ -70,14 +70,14 @@ const newTable = () => {
     table.innerHTML = generateTable(rows, cols);
 }
 */
-const generateBarcodes = () => {
+export const generateBarcodes = () => {
     const barcodesDiv = document.getElementById("barcodes");
     barcodesDiv.classList.remove("hide");
     let barcodesInfo = {};
     barcodesDiv.innerHTML = '';
     barcodes.forEach(barcode => {
         barcodesInfo[barcode] = {};
-        barcodesDiv.innerHTML += `<li class='compounds'><button onClick={} type="button" class="btn btn-secondary m-1 btn-sm" id=${barcode} onclick="click_barcode(${barcode})">${barcode}</button></li>`;
+        barcodesDiv.innerHTML += `<li class='compounds'><button onClick={onclickBarcode(${barcode}))} type="button" class="btn btn-secondary m-1 btn-sm" id=${barcode}>${barcode}</button></li>`;
     });
 }
 

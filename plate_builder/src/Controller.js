@@ -1,3 +1,4 @@
+import {generateBarcodes} from './components/Plate.js'
 const table = document.getElementById("table");
 const barcodesDiv = document.getElementById("barcodes");
 const size = document.getElementById("size");
@@ -136,6 +137,7 @@ const click_row = (row) =>  {
 
 export const click_cell = (cell) => {
     console.log("clicked: " + cell);
+    generateBarcodes();
     if(document.getElementById(cell).title == "Empty") {
         document.getElementById(cell).title = "Filled";
         //document.getElementById(cell).style.backgroundColor = '#0000FF'
@@ -145,10 +147,8 @@ export const click_cell = (cell) => {
 
     }
 }
-        
 
-
-const click_barcode = (barcode) => {
-    selected = barcode;
-    document.getElementById("props").classList.remove("d-none");
+export const onclickBarcode = (id) => {
+    selected = document.getElementById(id);
+    console.log(selected)
 }
