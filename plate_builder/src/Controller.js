@@ -134,6 +134,7 @@ const click_row = (row) =>  {
     }
 }
 
+//
 export const click_cell = (cell) => {
     console.log("clicked: " + cell);
     if(document.getElementById(cell).title == "Empty") {

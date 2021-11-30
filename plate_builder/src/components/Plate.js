@@ -1,22 +1,27 @@
 //Home.jsY
-
 import React from 'react';
 import useParams from 'react';
 import {click_cell} from "./../Controller.js";
 const barcodeData = require('../data.json')
 let barcodes = barcodeData
 
-
+//Creation of the Plate
+//Functional components inherently have props which are the variable associated with the structure
 const Plate = (props) => {
     
+    //Creates rows and cols based on the row and col value from App.js
     const rows = +props.row;
     const cols = +props.col;
+    
+    //Creates new arrays which will hold the cells of the table and be used to create the table
     const rowsArr = new Array(rows)
     const colsArr = new Array(cols)
+
+    //Fills the arrays with empty values which will then be filled with barcodes
     rowsArr.fill("");
     colsArr.fill("");
-    console.log(rowsArr)
-    console.log(colsArr)
+
+    //Generation of the page that holds the table
     return(
         <div>
             <button id='' onClick={generateBarcodes}>Generate Barcodes</button> 
@@ -49,10 +54,27 @@ const Plate = (props) => {
         </div>
         );
 }
+
+//Exports the rendering of the plate for App.js to use
 export default Plate;
 
 let rowFill = {};
+
+//Creates the letters used in the table
 const convertCol2Alpha = (col) => String.fromCharCode(65 + col);
+
+//Generates the barcodes used to put into the table
+const generateBarcodes = () => {
+    const barcodesDiv = document.getElementById("barcodes");
+    barcodesDiv.classList.remove("hide");
+    let barcodesInfo = {};
+    barcodesDiv.innerHTML = '';
+    barcodes.forEach(barcode => {
+        barcodesInfo[barcode] = {};
+        barcodesDiv.innerHTML += `<li class='compounds'><button onClick={} type="button" class="btn btn-secondary m-1 btn-sm" id=${barcode} onclick="click_barcode(${barcode})">${barcode}</button></li>`;
+    });
+}
+
 /*
 const newTable = () => {
     if (size.value == "96") {
@@ -69,22 +91,14 @@ const newTable = () => {
     }
     table.innerHTML = generateTable(rows, cols);
 }
-*/
-const generateBarcodes = () => {
-    const barcodesDiv = document.getElementById("barcodes");
-    barcodesDiv.classList.remove("hide");
-    let barcodesInfo = {};
-    barcodesDiv.innerHTML = '';
-    barcodes.forEach(barcode => {
-        barcodesInfo[barcode] = {};
-        barcodesDiv.innerHTML += `<li class='compounds'><button onClick={} type="button" class="btn btn-secondary m-1 btn-sm" id=${barcode} onclick="click_barcode(${barcode})">${barcode}</button></li>`;
-    });
-}
+
+
 
 const compoundSelect = (name) => {
     const barcodesDiv = document.getElementById("barcodes");
     console.log(name)
 }
+
 const generateTable = (rows, cols) => {
     let tableHTML = `<table class="mb-3"><tbody><tr><th></th>`;
     for(let col = 0; col < cols; col++){
@@ -109,12 +123,14 @@ const generateTable = (rows, cols) => {
     tableHTML += "</tbody></table>";
     /*$(function () {
         $('[data-toggle="tooltip"]').tooltip()
-    })*/
+    })
     
     return tableHTML;
 }
 
-/*const newTable = () => {
+
+
+const newTable = () => {
     if (size.value == "96") {
         rows = 12;
         cols = 8;
