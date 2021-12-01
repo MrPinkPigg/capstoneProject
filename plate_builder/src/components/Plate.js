@@ -2,7 +2,8 @@
 
 import React from 'react';
 import useParams from 'react';
-import {click_cell, onclickBarcode} from "./../Controller.js";
+import {click_cell} from "./../Controller.js";
+//import {onclickBarcode} from "./../Controller.js";
 const barcodeData = require('../data.json')
 let barcodes = barcodeData
 
@@ -74,11 +75,29 @@ export const generateBarcodes = () => {
     const barcodesDiv = document.getElementById("barcodes");
     barcodesDiv.classList.remove("hide");
     let barcodesInfo = {};
-    barcodesDiv.innerHTML = '';
+    var buildStuff = '<ul id="barcodesList">';
     barcodes.forEach(barcode => {
         barcodesInfo[barcode] = {};
-        barcodesDiv.innerHTML += `<li class='compounds'><button onClick={onclickBarcode(${barcode}))} type="button" class="btn btn-secondary m-1 btn-sm" id=${barcode}>${barcode}</button></li>`;
+        buildStuff += `<li class='compounds'><button type="button" class="btn btn-secondary m-1 btn-sm" id=${barcode}>${barcode}</button></li>`;
+    
     });
+    buildStuff += '</ul>';
+    barcodesDiv.innerHTML = buildStuff;
+    var barcodesL = document.getElementById("barcodesList").getElementsByTagName('li');//array of lis
+    Array.from(barcodesL).forEach(function(li) {
+        var btnGrab = li.getElementsByTagName('button')[0];
+        //console.log(btnGrab.id);
+        btnGrab.onclick = function(){
+            var selected = this.id;
+            console.log(selected);
+        };
+    })
+    /*
+    $("#barcodesList ul li").each(function(){//this is li
+        var btn = $(this).find("button");
+        btn.on("click", onclickBarcode(btn.id));
+        
+    });  */
 }
 
 const compoundSelect = (name) => {
@@ -136,3 +155,4 @@ newTable();
 //document.getElementById("plate").innerHTML = generateTable(16,8);
 
 //$("#plate").add(generateTable(16,8));
+

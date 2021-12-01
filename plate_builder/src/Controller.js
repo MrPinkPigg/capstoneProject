@@ -117,8 +117,6 @@ const click_submit = () => {
 }
 */
 
-
-
 //
 // Archive
 //
@@ -148,7 +146,3 @@ export const click_cell = (cell) => {
     }
 }
 
-export const onclickBarcode = (id) => {
-    selected = document.getElementById(id);
-    console.log(selected)
-}
