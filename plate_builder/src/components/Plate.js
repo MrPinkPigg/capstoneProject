@@ -1,12 +1,11 @@
 //Home.jsY
-
 import React from 'react';
 import useParams from 'react';
-import {click_cell} from "./../Controller.js";
+import {click_cell, currentCell} from "./../Controller.js"; 
 //import {onclickBarcode} from "./../Controller.js";
 const barcodeData = require('../data.json')
 let barcodes = barcodeData
-
+let compounds = []
 
 const Plate = (props) => {
     
@@ -22,6 +21,15 @@ const Plate = (props) => {
         <div>
             <button id='' onClick={generateBarcodes}>Generate Barcodes</button> 
             <div id='barcodes' class='compoundsDiv hide'>
+            </div>
+            <div id='popup' class='hide'>
+                <div>
+                <input id='concentration' placeholder='Enter concentration'></input>
+                </div>
+                <div>
+                <input id='volume' placeholder='Enter volume'></input>
+                </div>
+                <button onClick={returnValues}>Submit</button>
             </div>
         <div id="plate">
             <table class="mb-3">
@@ -88,8 +96,10 @@ export const generateBarcodes = () => {
         var btnGrab = li.getElementsByTagName('button')[0];
         //console.log(btnGrab.id);
         btnGrab.onclick = function(){
-            var selected = this.id;
-            console.log(selected);
+            var values = document.getElementById('popup')
+            values.classList.remove('hide')
+            compounds.push(this.id)
+            
         };
     })
     /*
@@ -99,11 +109,15 @@ export const generateBarcodes = () => {
         
     });  */
 }
-
-const compoundSelect = (name) => {
-    const barcodesDiv = document.getElementById("barcodes");
-    console.log(name)
-}
+function returnValues() {
+    var concentration = document.getElementById('concentration').value;
+    var volume = document.getElementById('volume').value;
+    compounds.push(concentration, volume)
+    var cellValue = document.getElementById(currentCell)
+    cellValue.title = compounds;
+    console.log(cellValue)
+    return false;
+  }
 const generateTable = (rows, cols) => {
     let tableHTML = `<table class="mb-3"><tbody><tr><th></th>`;
     for(let col = 0; col < cols; col++){
@@ -119,7 +133,7 @@ const generateTable = (rows, cols) => {
         for(let col = 0; col < cols; col++){
             const cell = convertCol2Alpha(col) + row;
             tableHTML += 
-            `<td id=${cell} row=${row} class="border border-2" onclick={compoundSelect(${cell})} data-toggle="tooltip" data-placement="top" title="Empty">
+            `<td data='' id=${cell} row=${row} class="border border-2" onclick={compoundSelect(${cell})} data-toggle="tooltip" data-placement="top" title="Empty">
                 <section class="hovercell mx-1">${cell}</section>
             </td>`;
         }

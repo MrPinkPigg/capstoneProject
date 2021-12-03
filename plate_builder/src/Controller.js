@@ -17,6 +17,7 @@ let barcodes = barcodeData;
 let rows;
 let cols;
 let rowFill = {};
+export var currentCell;
 //
 // Allow for cell selection
 //
@@ -134,6 +135,7 @@ const click_row = (row) =>  {
 }
 
 export const click_cell = (cell) => {
+    currentCell = cell;
     console.log("clicked: " + cell);
     generateBarcodes();
     if(document.getElementById(cell).title == "Empty") {

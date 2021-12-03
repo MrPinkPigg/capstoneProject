@@ -135,3 +135,9 @@ td:hover .hovercell {
   transition:ease-out;
   background-color: #f1f1f1;
 }
+
+.popup {
+  background-color: #eee;
+  width: auto;
+  height: 200px;
+}
