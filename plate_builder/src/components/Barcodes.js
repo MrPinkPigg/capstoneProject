@@ -2,20 +2,12 @@
 
 import React, {Component} from 'react';
 
+//Grabs the information from data.json (the barcodes)
 const barcodeData = require("./../data.json");
 
 let barcodes = barcodeData;
 
-const barcodesRender = () => {
-    return(
-        <div>
-            <button id='' class='collapsible' onClick={generateBarcodes}>Click to Expand List of Barcodes</button>
-            <div id='barcodes' class='content hide'> 
-            </div>
-        </div>
-        );
-}
-
+//Generates the list of barcodes based on the data in data.json (barcode data)
 const generateBarcodes = () => {
     const barcodesDiv = document.getElementById("barcodes");
     let barcodesInfo = {};
@@ -32,6 +24,17 @@ const generateBarcodes = () => {
     });
 }
 
+//Renders the generated list of barcodes from generateBarcodes
+const barcodesRender = () => {
+    return(
+        <div>
+            <button id='' class='collapsible' onClick={generateBarcodes}>Click to Expand List of Barcodes</button>
+            <div id='barcodes' class='content hide'> 
+            </div>
+        </div>
+        );
+}
+
 class Compounds {
     constructor(name, conc, vol) {
         this.name = name;
@@ -40,5 +43,6 @@ class Compounds {
     }
 }
 
+//Exports the rendering of the barcodes for App.js to use
 export default barcodesRender;
 

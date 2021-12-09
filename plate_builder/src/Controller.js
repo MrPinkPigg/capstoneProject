@@ -134,6 +134,7 @@ const click_row = (row) =>  {
     }
 }
 
+//
 export const click_cell = (cell) => {
     currentCell = cell;
     console.log("clicked: " + cell);

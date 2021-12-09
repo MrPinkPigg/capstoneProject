@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 
+//Renders the ReactDom created in App.js based on the components in the components folder
 ReactDOM.render(
   <BrowserRouter>
     <App />

@@ -22,7 +22,9 @@ class App extends Component{
           </ul>
           </nav>
           <hr />
+          {/* These are the actual paths that the app takes, when clicking different links */}
           <Switch>
+            {/* Path to a single plate (12 rows, 8 cols) by passing these values into the props of the functional component */}
             <Route path='/plate' render={(props)=><Plate {...props} row='12' col='8'/>} />
             <Route path='/plate384' render={(props)=><Plate {...props} row='24' col='16'/>} />
             <Route path='/plate1536' render={(props)=><Plate {...props} row='64' col='24'/>} />
