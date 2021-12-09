@@ -5,7 +5,8 @@ import Plate from './components/Plate';
 import Barcodes from './components/Barcodes';
 import logo from './logo.svg';
 import './App.css';
-
+var row;
+var col;
 class App extends Component{
   render() {
     return (

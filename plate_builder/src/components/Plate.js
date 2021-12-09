@@ -19,7 +19,14 @@ const Plate = (props) => {
     console.log(colsArr)
     return(
         <div>
-            <button id='' onClick={generateBarcodes}>Generate Barcodes</button> 
+            <div>
+                <h3>Select Table Size</h3>
+            <select id='tablesize'>
+                <option>96</option>
+                <option>384</option>
+                <option>1538</option>
+            </select>
+            </div>
             <div id='barcodes' class='compoundsDiv hide'>
             </div>
             <div id='popup' class='hide'>
@@ -79,6 +86,10 @@ const newTable = () => {
     table.innerHTML = generateTable(rows, cols);
 }
 */
+export const tableSize = () => {
+    var size = document.getElementById('tablesize')
+    console.log(size.value)
+}
 export const generateBarcodes = () => {
     const barcodesDiv = document.getElementById("barcodes");
     barcodesDiv.classList.remove("hide");
@@ -115,6 +126,7 @@ function returnValues() {
     compounds.push(concentration, volume)
     var cellValue = document.getElementById(currentCell)
     cellValue.title = compounds;
+    cellValue.style.backgroundColor = '#0000FF'
     console.log(cellValue)
     return false;
   }
