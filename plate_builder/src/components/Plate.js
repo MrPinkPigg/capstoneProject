@@ -36,7 +36,7 @@ const Plate = (props) => {
                 <tbody>
                     <tr>
                         <th></th>
-                        {rowsArr.map((e, row) => <th scope="col" className ="textcenter">{convertCol2Alpha(row)}</th>)}
+                        {colsArr.map((e, row) => <th scope="col" className ="textcenter">{convertCol2Alpha(row)}</th>)}
                     </tr>
                 </tbody>
                 <tbody>
