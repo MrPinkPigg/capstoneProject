@@ -6,7 +6,8 @@ import {click_cell, currentCell} from "./../Controller.js";
 //import {onclickBarcode} from "./../Controller.js";
 const barcodeData = require('../data.json')
 let barcodes = barcodeData
-let compounds = []
+let compounds = [];
+let exportArr = [];
 
 const Plate = (props) => {
     
@@ -55,6 +56,7 @@ const Plate = (props) => {
                 </tbody>
             </table>
         </div>
+            <button type="button" onClick={exportJSON} >Export data</button>
         </div>
         );
 }
@@ -119,6 +121,8 @@ function returnValues() {
     compounds.push(concentration, volume)
     var cellValue = document.getElementById(currentCell)
     cellValue.title = compounds;
+    compounds.push(currentCell);
+    exportArr.push(compounds);
     compounds = [];
     cellValue.style.backgroundColor = '#0000FF'
     console.log(cellValue)
@@ -176,3 +180,7 @@ newTable();
 
 //$("#plate").add(generateTable(16,8));
 
+function exportJSON() {
+    console.log(exportArr);
+    sessionStorage.setItem("jsonData", exportArr);
+}
