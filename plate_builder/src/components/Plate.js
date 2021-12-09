@@ -22,9 +22,9 @@ const Plate = (props) => {
             <div>
                 <h3>Select Table Size</h3>
             <select id='tablesize'>
-                <option>96</option>
-                <option>384</option>
-                <option>1538</option>
+                <option value='96'>96</option>
+                <option value='384'>384</option>
+                <option value='1538'>1538</option>
             </select>
             </div>
             <div id='barcodes' class='compoundsDiv hide'>
