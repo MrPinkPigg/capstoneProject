@@ -77,18 +77,6 @@ let rowFill = {};
 //Creates the letters used in the table
 const convertCol2Alpha = (col) => String.fromCharCode(65 + col);
 
-//Generates the barcodes used to put into the table
-const generateBarcodes = () => {
-    const barcodesDiv = document.getElementById("barcodes");
-    barcodesDiv.classList.remove("hide");
-    let barcodesInfo = {};
-    barcodesDiv.innerHTML = '';
-    barcodes.forEach(barcode => {
-        barcodesInfo[barcode] = {};
-        barcodesDiv.innerHTML += `<li class='compounds'><button onClick={} type="button" class="btn btn-secondary m-1 btn-sm" id=${barcode} onclick="click_barcode(${barcode})">${barcode}</button></li>`;
-    });
-}
-
 /*
 const newTable = () => {
     if (size.value == "96") {
