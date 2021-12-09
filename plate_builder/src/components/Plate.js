@@ -43,11 +43,11 @@ const Plate = (props) => {
                 <tbody>
                     {rowsArr.map((e, row) => (
                         <tr>
-                            <th id={row} scope="row">{row}</th>
+                            <th id={row+1} scope="row">{row+1}</th>
                             {colsArr.map((e, col) => {
-                                const cell = convertCol2Alpha(col) + row
+                                const cell = convertCol2Alpha(col) + (row+1)
 
-                                return <td id={cell} row={row} class="border border-2" data-toggle="tooltip" data-placement="top" title="Empty">
+                                return <td id={cell} row={row+1} class="border border-2" data-toggle="tooltip" data-placement="top" title="Empty">
                                     <section className="hovercell mx-1" onClick={() => click_cell(cell)}>{cell}</section>
                                 </td>
                             })}
