@@ -118,11 +118,11 @@ function returnValues() {
     compounds.push(concentration, volume)
     var cellValue = document.getElementById(currentCell)
     cellValue.title = compounds;
+    compounds.push(currentCell);
+    exportArr.push(compounds);
     compounds = [];
     cellValue.style.backgroundColor = '#0000FF'
     console.log(cellValue)
-    compounds.push(currentCell);
-    exportArr.push(compounds);
     return false;
   }
 const generateTable = (rows, cols) => {
@@ -179,5 +179,5 @@ newTable();
 
 function exportJSON() {
     console.log(exportArr);
-    //sessionStorage.setItem("jsonData", exportArr);
+    sessionStorage.setItem("jsonData", exportArr);
 }
