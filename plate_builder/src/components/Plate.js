@@ -97,6 +97,7 @@ export const generateBarcodes = () => {
         var btnGrab = li.getElementsByTagName('button')[0];
         //console.log(btnGrab.id);
         btnGrab.onclick = function(){
+            barcodesDiv.classList.add('hide')
             var values = document.getElementById('popup')
             values.classList.remove('hide')
             compounds.push(this.id)
@@ -111,6 +112,8 @@ export const generateBarcodes = () => {
     });  */
 }
 function returnValues() {
+    var values = document.getElementById('popup')
+    values.classList.add('hide')
     var concentration = document.getElementById('concentration').value;
     var volume = document.getElementById('volume').value;
     compounds.push(concentration, volume)
