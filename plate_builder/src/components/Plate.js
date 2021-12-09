@@ -1,5 +1,6 @@
 //Home.jsY
 import React from 'react';
+import tableSize from './../App.js'
 import useParams from 'react';
 import {click_cell, currentCell} from "./../Controller.js"; 
 //import {onclickBarcode} from "./../Controller.js";
@@ -20,14 +21,6 @@ const Plate = (props) => {
     console.log(colsArr)
     return(
         <div>
-            <div>
-                <h3>Select Table Size</h3>
-            <select id='tablesize'>
-                <option value='96'>96</option>
-                <option value='384'>384</option>
-                <option value='1538'>1538</option>
-            </select>
-            </div>
             <div id='barcodes' class='compoundsDiv hide'>
             </div>
             <div id='popup' class='hide'>
@@ -88,10 +81,7 @@ const newTable = () => {
     table.innerHTML = generateTable(rows, cols);
 }
 */
-export const tableSize = () => {
-    var size = document.getElementById('tablesize')
-    console.log(size.value)
-}
+
 export const generateBarcodes = () => {
     const barcodesDiv = document.getElementById("barcodes");
     barcodesDiv.classList.remove("hide");
@@ -128,6 +118,7 @@ function returnValues() {
     compounds.push(concentration, volume)
     var cellValue = document.getElementById(currentCell)
     cellValue.title = compounds;
+    compounds = [];
     cellValue.style.backgroundColor = '#0000FF'
     console.log(cellValue)
     compounds.push(currentCell);
