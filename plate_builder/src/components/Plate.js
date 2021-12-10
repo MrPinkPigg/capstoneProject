@@ -8,6 +8,7 @@ const barcodeData = require('../data.json')
 let barcodes = barcodeData
 let compounds = [];
 let exportArr = [];
+const fs = require('fs');
 
 
 //Creation of the Plate
@@ -199,4 +200,26 @@ newTable();
 function exportJSON() {
     console.log(exportArr);
     sessionStorage.setItem("jsonData", exportArr);
+    var jsonBlob = new Blob([JSON.stringify(exportArr)], { type: 'application/javascript;charset=utf-8' });  
+    var link=window.URL.createObjectURL(jsonBlob);
+    window.location=link;
+    
 }
+    /* var fileName = 'table.json';
+    var fileToSave = new Blob([JSON.stringify(exportArr)],{
+        type: 'application/json'
+    });
+
+    ////////////saveAs(fileToSave, fileName); */
+
+/*  const exportFile = JSON.stringify(exportArr);
+
+cant do because we are saving from a browser
+    fs.writeFileSync('table.json', exportFile, (err) => {
+        if (err){
+            throw err;
+        }
+        console.log("JSON data is saved");
+
+    })
+    */
