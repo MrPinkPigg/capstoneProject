@@ -37,6 +37,13 @@
   }
 }
 
+.nav-link:active,
+.nav-link:hover{
+  background-color: grey;
+  color: white;
+
+}
+
 button {
   margin:5px;
 }
@@ -51,12 +58,16 @@ table th {
   width: auto !important;
 }
 
+.textcenter{
+  text-align: center;
+}
+
 .selected {
   background-color: lightyellow;
 }
 
 .table-row:hover {
-  background-color: lightgrey;
+  background-color: lightgoldenrodyellow;
 }
 
 .placed {
@@ -69,6 +80,10 @@ table th {
 
 .tooltip-inner {
   white-space:pre-wrap;
+}
+
+td:hover{
+  background-color: lightgreen;
 }
 
 td .hovercell {
@@ -88,7 +103,7 @@ td:hover .hovercell {
 }
 .compoundsDiv {
   border: 1px solid black;
-  float: left;
+  float: right;
   border-radius: 5px;
   height: 400px;
   width:200px;
@@ -102,6 +117,12 @@ td:hover .hovercell {
 
 .compBtn {
   margin-top: 10px;
+}
+
+.popupDiv {
+  background-color: #FFFFFF;
+  width: auto;
+  height: 200px;
 }
 
 #props {
@@ -134,10 +155,4 @@ td:hover .hovercell {
   text-align:center;
   transition:ease-out;
   background-color: #f1f1f1;
-}
-
-.popup {
-  background-color: #eee;
-  width: auto;
-  height: 200px;
 }

@@ -137,7 +137,7 @@ function returnValues() {
     compounds.push(currentCell);
     exportArr.push(compounds);
     compounds = [];
-    cellValue.style.backgroundColor = '#0000FF'
+    cellValue.style.backgroundColor = '#4fc3f7'
     console.log(cellValue)
     return false;
   }
