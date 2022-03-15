@@ -1,8 +1,11 @@
 
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Link, useLocation} from 'react-router-dom';
+import { Redirect } from "react-router";
 import Plate from './components/Plate';
 import Barcodes from './components/Barcodes';
+import Header from './components/Header'
+import Login from './components/Login'
 import logo from './logo.svg';
 import './App.css';
 var row = 12;
@@ -11,26 +14,18 @@ class App extends Component{
   render() {
     return (
       <Router>
-        <div>
-          <h2>PlateBuilder</h2>
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <ul className="navbar-nav mr-auto">
-            <li><Link to={'/plate'} className="nav-link"> 96 Plate </Link></li>
-            <li><Link to={'/plate384'} className="nav-link"> 384 Plate </Link></li>
-            <li><Link to={'/plate1536'} className="nav-link"> 1536 Plate </Link></li>
-            <li><Link to={'/barcodes'} className="nav-link">Barcodes</Link></li>
-          </ul>
-          </nav>
-          <hr />
           {/* These are the actual paths that the app takes, when clicking different links */}
-          <Switch>
+        <Switch>
             {/* Path to a single plate (12 rows, 8 cols) by passing these values into the props of the functional component */}
+            <Route exact path="/" component={Login} />
+          <div>
+            <Header />
             <Route path='/plate' render={(props)=><Plate {...props} row='12' col='8'/>} />
             <Route path='/plate384' render={(props)=><Plate {...props} row='24' col='16'/>} />
             <Route path='/plate1536' render={(props)=><Plate {...props} row='64' col='24'/>} />
             <Route path='/barcodes' render={()=><Barcodes/>} />
-          </Switch>
-        </div>
+          </div>
+        </Switch>
       </Router>
     );
   }
