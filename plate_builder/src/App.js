@@ -12,6 +12,7 @@ var row = 12;
 var col = 8;
 class App extends Component{
   render() {
+    this.state = { isAuthenticated: false };
     return (
       <Router>
           {/* These are the actual paths that the app takes, when clicking different links */}
