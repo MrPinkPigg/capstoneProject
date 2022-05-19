@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import '../App.css';
+import '../user.js';
 
 const Login = () =>{
     return (
@@ -7,8 +8,8 @@ const Login = () =>{
         <div class="mod" id='signIn'>
             <div class="modal-content">
                 <h2>Sign In</h2>
-                <input class='inputs' placeholder='Username'></input> <br></br>
-                <input class='inputs' placeholder='Password'></input> <br></br>
+                <input class='inputs' placeholder='Username' id='username'></input> <br></br>
+                <input class='inputs' placeholder='Password' id='pass'></input> <br></br>
                 <button class='buttonLink' onClick={showForgot}>Forgot Password?</button> <br></br>
                 <button type='submit' class='loginButton'>Login</button>
                 <button class='buttonLink2' onClick={showCreate}>Create Account</button>
@@ -18,8 +19,8 @@ const Login = () =>{
             <div class="modal-content">
                 <h2 onClick={showLogin}>&#8592;</h2>
                 <h2>Create Account</h2>
-                <input class='inputs' placeholder='Username'></input> <br></br>
-                <input class='inputs' placeholder='Password'></input> <br></br>
+                <input class='inputs' placeholder='Username' id='newUsername'></input> <br></br>
+                <input class='inputs' placeholder='Password' id='newPass'></input> <br></br>
                 <button type='submit' class='loginButton' onClick={showCreate}>Create Account</button>
             </div>
         </div>
@@ -27,7 +28,7 @@ const Login = () =>{
             <div class="modal-content"> 
                 <h2>Reset Password</h2>
                 <body>Enter your email to receive password instructions</body>
-                <input class='inputs' placeholder='email'></input> <br></br>
+                <input class='inputs' placeholder='email' id='recovPassEmail'></input> <br></br>
                 <button type='submit' class='loginButton' onClick={showForgot}>Send Email</button>
             </div>
         </div>
