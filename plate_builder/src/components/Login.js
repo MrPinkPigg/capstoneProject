@@ -11,10 +11,10 @@ const Login = () =>{
                     <h2>Sign In</h2>
                     <input class='inputs' placeholder='Username' id='username'></input> <br></br>
                     <input class='inputs' placeholder='Password' id='pass'></input> <br></br>
-                    <button class='buttonLink' onClick={showForgot}>Forgot Password?</button> <br></br>
+                    <button type='button' class='buttonLink' onClick={showForgot}>Forgot Password?</button> <br></br>
                     <button type='submit' class='loginButton' onclick="loginUser()">Login</button>
-                    <button class='buttonLink2' onClick={showCreate}>Create Account</button>
-                </form>                
+                    <button type='button' class='buttonLink2' onClick={showCreate}>Create Account</button>  
+                </form>              
             </div>
         </div>
         <div class="mod hide" id='createAcc'>
