@@ -1,18 +1,19 @@
 
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import {BrowserRouter as Router, Switch, Route, Link, useLocation} from 'react-router-dom';
 import { Redirect } from "react-router";
 import Plate from './components/Plate';
 import Barcodes from './components/Barcodes';
 import Header from './components/Header'
 import Login from './components/Login'
+import Axios from 'axios'
 import logo from './logo.svg';
 import './App.css';
 var row = 12;
 var col = 8;
+
 class App extends Component{
   render() {
-    this.state = { isAuthenticated: false };
     return (
       <Router>
           {/* These are the actual paths that the app takes, when clicking different links */}
